@@ -1,0 +1,34 @@
+# ---------------------
+# Example parameter file for running a brownian dynamics simulation
+# while keeping track of shear stress correlation
+# ----------------------
+# Run Brownian Dynamics
+ACTION browndyn
+# using 4-th order runge-kutta
+RUNGEKUTTA 4
+# Run 2000 chains in parallel
+NCHAIN 1000
+# run for 10000 steps; print output on a logarithmic schedule
+BDSTEPS 50000 0.05 T
+# seed random number generator from system time
+RNGSEED 0
+# segment length 1
+LS 0.025D0
+# 400 segments (so 401 beads)
+NPT 401
+# chain is stretchable, shearable, and has bend-shear coupling
+STRETCHABLE T
+SHEARABLE T
+COUPLED T
+# chain energetic parameters
+LP  1.5502D0
+GAM 0.99606D0
+EPAR  1.2939D4
+EPERP  3.718D4
+EC -144.62
+# position and orientation friction coefficients for each bead
+FRICT 0.0249 3.9684e-7
+# timestep as a multiple of friction
+DELTSCL 8.51e-4
+# start with chains sampled from an equilibrium distribution
+STARTEQUIL 2
